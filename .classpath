@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-3d-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-algorithms-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-api-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-graph-impl-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-visualization-2.0.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
