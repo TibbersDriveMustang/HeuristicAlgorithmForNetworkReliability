@@ -1,24 +1,22 @@
 package test;
 import java.util.*;
 import NetworkElements.*;
+import Visual.drawGraph;
 public class Test {
-	Node[] nodes;
-	List<Edge> edges;
-	List<Integer> coordinateList;
+	drawGraph frame;
 	
 	public Test(){
-		//15 nodes
-		nodes = new Node[15];
-		
-		coordinateList = new ArrayList<Integer>();
-		coordinateList.addAll(Arrays.asList(1,2,3,4,5,6,7,8,9));
 	}
-	
+	/**
+	 * Assign random coordinates for all nodes and avoid duplicate
+	 * @param nodes
+	 * arrays for all nodes
+	 */
 	public void setRandomCoordinates(Node[] nodes){
 		//x and y
 		//from 0 to 9
 		HashSet<Node> temp = new HashSet<Node>();
-		for(Node node : nodes){
+		for(int i = 0 ; i < nodes.length; i ++){
 			int x = (int)(Math.random() * 10);
 			int y = (int)(Math.random() * 10);
 			while(!temp.add(new Node(x,y))){
@@ -26,14 +24,8 @@ public class Test {
 				y = (int)(Math.random() * 10);
 				System.out.println("Not add");
 			}
-			node = new Node(x,y);
+			nodes[i] = new Node(x * 100,y * 100);
 			System.out.println("" + x + " " + y);
 		}
 	} 
-	
-	
-	public static void main(String args[]){
-		Test test = new Test();
-		test.setRandomCoordinates(test.nodes);
-	}
 }

@@ -6,6 +6,6 @@
 	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-algorithms-2.0.1.jar"/>
 	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-api-2.0.1.jar"/>
 	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-graph-impl-2.0.1.jar"/>
-	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jung2-2_0_1/jung-visualization-2.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Tibbers/Google Drive/2016Summer/Algorithm Aspects of  Telecommunication Networks/Projects/project3/jfreechart-1.0.19/lib/jfreechart-1.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
