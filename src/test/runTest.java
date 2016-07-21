@@ -19,14 +19,8 @@ public class runTest {
 		testBed.setRandomCoordinates(test1.nodes);
 		drawGraph graph1 = new drawGraph("Test");
     	graph1.setSize(1000,1000);
-    	test1.nodes[0] = new Node(1,2);//manual added
     	graph1.setVisible(true);
 		graph1.addNodes(test1.nodes);
 		graph1.addEdges(test1.edges);
-    	
-		
-		System.out.println(Arrays.asList(test1.nodes));//null null null null
-
-		
 	}
 }

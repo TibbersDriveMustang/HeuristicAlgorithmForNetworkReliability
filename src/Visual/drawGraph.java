@@ -62,18 +62,18 @@ public class drawGraph extends JFrame{
 	
 	public void paint(Graphics g){
 		FontMetrics f = g.getFontMetrics();
-		int nodeHeight = Math.max(this.height, f.getHeight());
+		int nodeHeight = 5;//Math.max(this.height, f.getHeight());
 		g.setColor(Color.black);
 		for(Edge e: edges){
 			g.drawLine(e.getNodeOne().getX(), e.getNodeOne().getY(), e.getNodeTwo().getX(), e.getNodeTwo().getY());
 		}
 		for(Node n : nodes){
-			int nodeWidth = Math.max(this.width, f.stringWidth(n.toString()) + width/2);
-			g.setColor(Color.white);
+			int nodeWidth = 5;//Math.max(this.width, f.stringWidth(n.toString()) + width/2);
+			g.setColor(Color.red);
 			g.fillOval(n.getX() - nodeWidth/2, n.getY() - nodeHeight/2, nodeWidth, nodeHeight);
 			g.setColor(Color.black);
 			g.drawOval(n.getX()-nodeWidth/2, n.getY()-nodeHeight/2, nodeWidth, nodeHeight);
-			g.drawString(n.toString(), n.getX()-f.stringWidth(n.toString())/2, n.getY()+f.getHeight()/2);
+			g.drawString("(" + n.getX()/50 + "," + n.getY()/50 + ")" , n.getX()-f.stringWidth(n.toString())/2, n.getY()+f.getHeight()/2);
 		}
 	}
 /*	

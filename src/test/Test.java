@@ -17,14 +17,14 @@ public class Test {
 		//from 0 to 9
 		HashSet<Node> temp = new HashSet<Node>();
 		for(int i = 0 ; i < nodes.length; i ++){
-			int x = (int)(Math.random() * 10);
-			int y = (int)(Math.random() * 10);
+			int x = (int)(Math.random() * 10 );
+			int y = (int)(Math.random() * 10 );
 			while(!temp.add(new Node(x,y))){
-				x = (int)(Math.random() * 10);
-				y = (int)(Math.random() * 10);
+				x = (int)(Math.random() * 10 );
+				y = (int)(Math.random() * 10 );
 				System.out.println("Not add");
 			}
-			nodes[i] = new Node(x * 100,y * 100);
+			nodes[i] = new Node(50 + x * 50,50 + y * 50);
 			System.out.println("" + x + " " + y);
 		}
 	} 
