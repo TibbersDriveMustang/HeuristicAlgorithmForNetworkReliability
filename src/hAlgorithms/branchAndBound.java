@@ -12,7 +12,7 @@ public class branchAndBound {
 	public void pick(){
 		for(Node node1: this.ShortestPathGraph.getVertices()){
 			LinkedHashMap<Float,Node> stack = new LinkedHashMap<Float,Node>();
-			float threshold = Float.MAX_VALUE;
+			float threshold = 0;
 			int count = 0;
 			if(!node1.isFixed()){
 				node1.setFixed();
@@ -21,6 +21,10 @@ public class branchAndBound {
 						float distance = this.getGeometricDistance(node1, node2);
 						if(count < 3){
 							stack.put(distance, node2);
+							if(distance > threshold){
+								threshold = distance;
+							}
+							count++;
 						}
 						else if(distance < threshold){
 							stack.remove(threshold);
@@ -36,9 +40,10 @@ public class branchAndBound {
 			for(float key : stack.keySet()){
 				Edge edge = new Edge(node1,stack.get(key),key);
 				this.ShortestPathGraph.addEdge(edge, node1, stack.get(key));
+				System.out.println("Edge Added : " + edge);
 			}
 		}
-		System.out.println("Edges : " + Arrays.asList(this.ShortestPathGraph.getEdges()));
+		//System.out.println("Edges : " + Arrays.asList(this.ShortestPathGraph.getEdges()));
 	}
 	
 	private float getGeometricDistance(Node one, Node two){

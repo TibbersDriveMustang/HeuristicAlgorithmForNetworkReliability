@@ -71,7 +71,7 @@ public class drawGraph extends JFrame{
 		int nodeHeight = 5;//Math.max(this.height, f.getHeight());
 		g.setColor(Color.blue);
 		for(Edge e: edges){
-			g.drawLine(e.getNodeOne().getX() * 50, e.getNodeOne().getY() * 50, e.getNodeTwo().getX() * 50, e.getNodeTwo().getY() * 50);
+			g.drawLine(50 + e.getNodeOne().getX() * 50, 50 + e.getNodeOne().getY() * 50, 50 + e.getNodeTwo().getX() * 50, 50 + e.getNodeTwo().getY() * 50);
 		}
 		for(Node n : nodes){
 			int nodeWidth = 5;//Math.max(this.width, f.stringWidth(n.toString()) + width/2);
