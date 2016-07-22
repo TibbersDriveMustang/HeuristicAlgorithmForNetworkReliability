@@ -5,6 +5,7 @@ public class Node {
 	private int x;
 	private int y;
 	private int degree;
+	private boolean fix;
 	public Node(int id){
 		this.id = id;
 	}
@@ -17,6 +18,16 @@ public class Node {
 	public Node(int x, int y){
 		this.x = x;
 		this.y = y;
+	}
+	public boolean isFixed(){
+		if(fix == true){
+			return true;
+		}
+		return false;
+	}
+	
+	public void setFixed(){
+		this.fix = true;
 	}
 	
 	public int getX(){

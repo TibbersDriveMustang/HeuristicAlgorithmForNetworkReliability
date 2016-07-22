@@ -2,7 +2,7 @@ package NetworkElements;
 
 public class Edge {  //undirected
 	private int index;
-	private double weight;
+	private float weight;
 	private double p;  //reliability
 	private boolean state;
 	private Node nodeOne;
@@ -15,10 +15,11 @@ public class Edge {  //undirected
 		this.state = true;
 	}
 	
-	public Edge(Node nodeOne, Node nodeTwo){
+	public Edge(Node nodeOne, Node nodeTwo, float weight){
 		this.nodeOne = nodeOne;
 		this.nodeTwo = nodeTwo;
 		this.state = true;
+		this.weight = weight;
 	}
 	
 	public Edge(int index, Node nodeOne, Node nodeTwo, double p){

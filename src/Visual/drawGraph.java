@@ -53,7 +53,13 @@ public class drawGraph extends JFrame{
 			this.edges.add(edge);
 			this.repaint();
 		}
-		
+	}
+	
+	public void addEdges(Collection<Edge> edges){
+		for(Edge edge: edges){
+			this.edges.add(edge);
+			this.repaint();
+		}		
 	}
 	
 	public void showGraph(){
@@ -63,9 +69,9 @@ public class drawGraph extends JFrame{
 	public void paint(Graphics g){
 		FontMetrics f = g.getFontMetrics();
 		int nodeHeight = 5;//Math.max(this.height, f.getHeight());
-		g.setColor(Color.black);
+		g.setColor(Color.blue);
 		for(Edge e: edges){
-			g.drawLine(e.getNodeOne().getX(), e.getNodeOne().getY(), e.getNodeTwo().getX(), e.getNodeTwo().getY());
+			g.drawLine(e.getNodeOne().getX() * 50, e.getNodeOne().getY() * 50, e.getNodeTwo().getX() * 50, e.getNodeTwo().getY() * 50);
 		}
 		for(Node n : nodes){
 			int nodeWidth = 5;//Math.max(this.width, f.stringWidth(n.toString()) + width/2);

@@ -3,6 +3,7 @@ package test;
 import java.util.*;
 import NetworkElements.*;
 import Visual.drawGraph;
+import hAlgorithms.*;
 import edu.uci.ics.jung.algorithms.*;
 import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
 public class runTest {
@@ -10,9 +11,9 @@ public class runTest {
 	ArrayList<Edge> edges;
 	myGraph<Node,Edge> ShortestPathGraph;
 	DijkstraShortestPath<Node,Edge> DSP;
+	branchAndBound BB;
 	public runTest(){
 		nodes = new Node[15];
-		edges = new ArrayList<Edge>();
 		this.ShortestPathGraph = new myGraph();
 	}
 	
@@ -24,8 +25,10 @@ public class runTest {
     	graph1.setSize(1000,1000);
     	graph1.setVisible(true);
 		graph1.addNodes(test1.nodes);
-		graph1.addEdges(test1.edges);
 		test1.ShortestPathGraph.addVertices(test1.nodes);
 		System.out.println("Nodes added to ShortestPathGraph: " + Arrays.asList(test1.ShortestPathGraph.getVertices()));
+		test1.BB = new branchAndBound(test1.ShortestPathGraph);
+		test1.BB.pick();
+		graph1.addEdges(test1.ShortestPathGraph.getEdges());
 	}
 }
