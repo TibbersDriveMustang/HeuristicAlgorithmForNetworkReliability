@@ -6,6 +6,7 @@ import edu.uci.ics.jung.graph.util.Pair;
 import edu.uci.ics.jung.graph.*;
 
 public class myGraph<V,E> extends UndirectedSparseGraph<V,E> implements Cloneable{
+	private int diameter;
 	public myGraph(){
 	}
 	
@@ -15,6 +16,16 @@ public class myGraph<V,E> extends UndirectedSparseGraph<V,E> implements Cloneabl
 	public myGraph(myGraph<V,E> another){
 		//this.edges = another.edges;
 		this.vertices = another.vertices;
+	}
+	
+	public int getDiameter(){
+		return this.diameter;
+	}
+	
+	public void addVertices(Node[] nodes){
+		for(Node n : nodes){
+			this.addVertex((V)n);					//???
+		}
 	}
 	
 	public Object clone(){  

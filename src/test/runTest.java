@@ -1,16 +1,19 @@
 package test;
 
 import java.util.*;
-import NetworkElements.Edge;
-import NetworkElements.Node;
+import NetworkElements.*;
 import Visual.drawGraph;
+import edu.uci.ics.jung.algorithms.*;
+import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
 public class runTest {
 	Node[] nodes;
 	ArrayList<Edge> edges;
-	List<Integer> coordinateList;
+	myGraph<Node,Edge> ShortestPathGraph;
+	DijkstraShortestPath<Node,Edge> DSP;
 	public runTest(){
 		nodes = new Node[15];
 		edges = new ArrayList<Edge>();
+		this.ShortestPathGraph = new myGraph();
 	}
 	
 	public static void main(String args[]){
@@ -22,5 +25,7 @@ public class runTest {
     	graph1.setVisible(true);
 		graph1.addNodes(test1.nodes);
 		graph1.addEdges(test1.edges);
+		test1.ShortestPathGraph.addVertices(test1.nodes);
+		System.out.println("Nodes added to ShortestPathGraph: " + Arrays.asList(test1.ShortestPathGraph.getVertices()));
 	}
 }

@@ -4,9 +4,16 @@ public class Node {
 	private int id;
 	private int x;
 	private int y;
+	private int degree;
 	public Node(int id){
 		this.id = id;
 	}
+	public Node(int index,int x, int y){
+		this.id = index;
+		this.x = x;
+		this.y = y;
+	}
+	
 	public Node(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -30,6 +37,14 @@ public class Node {
 	
 	public int getID(){
 		return this.id;
+	}
+	
+	public void increaseDegree(){
+		this.degree++;
+	}
+	
+	public int getDegree(){
+		return this.degree;
 	}
 	
 	@Override public int hashCode(){

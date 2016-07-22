@@ -1,8 +1,8 @@
 package Visual;
 
 import javax.swing.*;
-
 import java.awt.*;
+
 import java.util.*;
 import NetworkElements.*;
 public class drawGraph extends JFrame{
@@ -70,10 +70,10 @@ public class drawGraph extends JFrame{
 		for(Node n : nodes){
 			int nodeWidth = 5;//Math.max(this.width, f.stringWidth(n.toString()) + width/2);
 			g.setColor(Color.red);
-			g.fillOval(n.getX() - nodeWidth/2, n.getY() - nodeHeight/2, nodeWidth, nodeHeight);
+			g.fillOval(50 + n.getX() * 50 - nodeWidth/2, 50 + n.getY() * 50 - nodeHeight/2, nodeWidth, nodeHeight);
 			g.setColor(Color.black);
-			g.drawOval(n.getX()-nodeWidth/2, n.getY()-nodeHeight/2, nodeWidth, nodeHeight);
-			g.drawString("(" + n.getX()/50 + "," + n.getY()/50 + ")" , n.getX()-f.stringWidth(n.toString())/2, n.getY()+f.getHeight()/2);
+			g.drawOval(50 + n.getX() * 50 - nodeWidth/2, 50 + n.getY() * 50 - nodeHeight/2, nodeWidth, nodeHeight);
+			g.drawString("(" + n.getX() + "," + n.getY() + ")" , 50 + n.getX() * 50 - f.stringWidth(n.toString())/2, 60 + n.getY() * 50 + f.getHeight()/2);
 		}
 	}
 /*	
