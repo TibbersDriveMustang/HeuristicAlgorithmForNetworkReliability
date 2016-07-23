@@ -26,6 +26,7 @@ public class runTest {
 		test1.ShortestPathGraph.addVertices(test1.nodes);
 		System.out.println("Nodes added to ShortestPathGraph: " + Arrays.asList(test1.ShortestPathGraph.getVertices()));
 		test1.BB = new branchAndBound(test1.ShortestPathGraph);
+		//need 5 runs
 		test1.BB.pick();
 		graph1.addEdges(test1.ShortestPathGraph.getEdges());
 	}

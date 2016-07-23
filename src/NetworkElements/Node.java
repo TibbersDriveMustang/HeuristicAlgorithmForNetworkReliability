@@ -54,6 +54,10 @@ public class Node {
 		this.degree++;
 	}
 	
+	public void dercreaseDegree(){
+		this.degree--;
+	}
+	
 	public int getDegree(){
 		return this.degree;
 	}
