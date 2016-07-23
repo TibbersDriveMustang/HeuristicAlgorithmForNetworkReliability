@@ -35,17 +35,18 @@ public class myGraph<V,E> extends UndirectedSparseGraph<V,E> implements Cloneabl
 	        return null; 
 	    }
 	}
-	
+/*	
 	public boolean removeEdge(E edge){
 		Edge tempEdge = (Edge)edge;
 		if(this.edges.containsKey(tempEdge)){
 			System.out.println("Contains Edges here=================================");
-			this.edges.remove(tempEdge);
+			System.out.println(this.edges.get(tempEdge));
+			System.out.println(this.edges);
 			return true;
 		}
 		return false;
 	}
-	
+*/	
 	public boolean removeEdge(int index){
 		Iterator i = this.edges.entrySet().iterator();
 		while(i.hasNext()){

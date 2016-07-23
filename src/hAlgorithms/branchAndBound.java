@@ -39,8 +39,6 @@ public class branchAndBound {
 					}
 				}
 			}
-
-			//
 			//Create 3 minimun cost edges insert to graph
 			for(float key : stack.keySet()){
 				this.totalGeometricCost += key;   					//add to total cost
