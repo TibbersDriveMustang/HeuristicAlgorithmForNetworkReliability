@@ -5,12 +5,10 @@ import NetworkElements.*;
 import Visual.drawGraph;
 import hAlgorithms.*;
 import edu.uci.ics.jung.algorithms.*;
-import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
 public class runTest {
 	Node[] nodes;
 	ArrayList<Edge> edges;
 	myGraph<Node,Edge> ShortestPathGraph;
-	DijkstraShortestPath<Node,Edge> DSP;
 	branchAndBound BB;
 	public runTest(){
 		nodes = new Node[15];
