@@ -20,6 +20,7 @@ public class branchAndBound {
 	}
 	
 	public void pick(){
+		
 		for(Node node1: this.ShortestPathGraph.getVertices()){
 			LinkedHashMap<Float,Node> stack = new LinkedHashMap<Float,Node>();
 			System.out.println("==========For Node : " + node1 + "============== degree" + node1.getDegree() );
