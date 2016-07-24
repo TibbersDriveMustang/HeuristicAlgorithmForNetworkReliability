@@ -42,7 +42,9 @@ public class drawGraph extends JFrame{
 	 */
 	public void addNodes(Node[] nodes){
 		for(Node node : nodes){
-			this.nodes.add(node);
+			if(this.nodes.add(node)){
+				System.out.println("Node added : " + node);
+			}
 			this.repaint();
 		}
 		

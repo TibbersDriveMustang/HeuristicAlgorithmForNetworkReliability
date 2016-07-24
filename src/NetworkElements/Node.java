@@ -13,11 +13,13 @@ public class Node {
 		this.id = index;
 		this.x = x;
 		this.y = y;
+		this.degree = 0;
 	}
 	
 	public Node(int x, int y){
 		this.x = x;
 		this.y = y;
+		this.degree = 0;
 	}
 	public boolean isFixed(){
 		if(fix == true){

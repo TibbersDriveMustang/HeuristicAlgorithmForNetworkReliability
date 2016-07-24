@@ -24,7 +24,9 @@ public class myGraph<V,E> extends UndirectedSparseGraph<V,E> implements Cloneabl
 	
 	public void addVertices(Node[] nodes){
 		for(Node n : nodes){
-			this.addVertex((V)n);					//???
+			if(this.addVertex((V)n)){					//???
+				//System.out.println("Vertex " + n + " added");
+			}
 		}
 	}
 	

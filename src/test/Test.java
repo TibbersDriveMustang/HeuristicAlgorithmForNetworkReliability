@@ -15,7 +15,7 @@ public class Test {
 	public void setRandomCoordinates(Node[] nodes){
 		//x and y
 		//from 0 to 9
-		System.out.println("Nodes added: ");
+		System.out.println("Nodes Created: ");
 		HashSet<Node> temp = new HashSet<Node>();
 		for(int i = 0 ; i < nodes.length; i ++){
 			int x = (int)(Math.random() * 10 );
@@ -28,5 +28,24 @@ public class Test {
 			nodes[i] = new Node(i,x,y);
 			System.out.println("" + x + " " + y);
 		}
+	} 
+	public Node[] setRandomCoordinates(){
+		//x and y
+		//from 0 to 9
+		System.out.println("Nodes Created: ");
+		Node[] nodes = new Node[15];
+		HashSet<Node> temp = new HashSet<Node>();
+		for(int i = 0 ; i < 15; i ++){
+			int x = (int)(Math.random() * 10 );
+			int y = (int)(Math.random() * 10 );
+			while(!temp.add(new Node(x,y))){
+				x = (int)(Math.random() * 10 );
+				y = (int)(Math.random() * 10 );
+				System.out.println("Not add");
+			}
+			nodes[i] = new Node(i,x,y);
+			System.out.println("" + x + " " + y);
+		}
+		return nodes;
 	} 
 }

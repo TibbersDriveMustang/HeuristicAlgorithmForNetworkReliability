@@ -1,4 +1,4 @@
-package hAlgorithms;
+package HeuristicAlgorithms;
 
 import NetworkElements.*;
 import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
@@ -10,7 +10,11 @@ public class branchAndBound {
 	myGraph<Node,Edge> ShortestPathGraph;
 	DijkstraShortestPath<Node,Edge> DSP;
 	float totalGeometricCost;
-	
+
+	public branchAndBound(){
+		this.ShortestPathGraph = new myGraph();
+	}	
+		
 	public branchAndBound(myGraph<Node,Edge> ShortestPathGraph){
 		this.ShortestPathGraph = ShortestPathGraph;
 	}
@@ -18,17 +22,24 @@ public class branchAndBound {
 	public void pick(){
 		for(Node node1: this.ShortestPathGraph.getVertices()){
 			LinkedHashMap<Float,Node> stack = new LinkedHashMap<Float,Node>();
-			System.out.println("==========For Node : " + node1 + "==============");
+			System.out.println("==========For Node : " + node1 + "============== degree" + node1.getDegree() );
 			float threshold = 0;
-			//if(!node1.isFixed()){
 			if(node1.getDegree() < 3){
-				//node1.setFixed();
 				for(Node node2: this.ShortestPathGraph.getVertices()){
-					//if(!node2.isFixed() && node1 != node2){
 					if( node1 != node2){
 						float distance = this.getGeometricDistance(node1, node2);
 						if(node1.getDegree() < 3){
 							stack.put(distance, node2);
+							Edge edge = new Edge(node1,stack.get(distance),distance);
+							this.ShortestPathGraph.addEdge(edge, node1, stack.get(distance));
+							if(!checkDiameter(node1)){			//check diameter , from node1 to all others
+								//this.ShortestPathGraph.removeEdge(edge);
+								System.out.println("Edge adding will lead to diameter > 4, cancel adding action");
+								this.ShortestPathGraph.removeEdge(edge);
+								stack.remove(distance);
+								continue;
+							}
+							this.ShortestPathGraph.removeEdge(edge);
 							if(distance > threshold){
 								threshold = distance;
 							}
@@ -36,12 +47,20 @@ public class branchAndBound {
 							node2.increaseDegree();
 						}
 						else if(distance < threshold){
-							stack.get(threshold).dercreaseDegree();
+							//stack.get(threshold).dercreaseDegree();
+							Edge edge = new Edge(node1,node2,distance);
+							this.ShortestPathGraph.addEdge(edge, node1, node2);
+							if(!checkDiameter(node1)){			//check diameter , from node1 to all others
+								//this.ShortestPathGraph.removeEdge(edge);
+								System.out.println("Edge adding will lead to diameter > 4, cancel adding action");
+								this.ShortestPathGraph.removeEdge(edge);
+								continue;
+							}
+							this.ShortestPathGraph.removeEdge(edge);
 							stack.remove(threshold);
 							stack.put(distance, node2);
 							threshold = distance;
 						}
-						System.out.println("Nodes in Stack to be connected: " + stack);
 					}
 				}
 			}
@@ -50,20 +69,18 @@ public class branchAndBound {
 				this.totalGeometricCost += key;   					//add to total cost
 				Edge edge = new Edge(node1,stack.get(key),key);
 				this.ShortestPathGraph.addEdge(edge, node1, stack.get(key));
-				if(!checkDiameter(node1)){			//check diameter , from node1 to all others
-					//this.ShortestPathGraph.removeEdge(edge);
-					System.out.println("Edge adding will lead to diameter > 4, cancel adding action");
-					this.ShortestPathGraph.removeEdge(edge);
-				}
-				else{
-					//stack.get(key).increaseDegree();
-					System.out.println("Edge Added : " + edge);
-				}
 			}
 
 		}
 		System.out.println("Total Cost: " + this.totalGeometricCost);
 		//System.out.println("Edges : " + Arrays.asList(this.ShortestPathGraph.getEdges()));
+	}
+	
+	
+	private void resetEdges(){
+		for(Edge edge : this.ShortestPathGraph.getEdges()){
+			this.ShortestPathGraph.removeEdge(edge);
+		}
 	}
 	/**
 	 * Check diameter start from node one, if diameter <= 4, return true

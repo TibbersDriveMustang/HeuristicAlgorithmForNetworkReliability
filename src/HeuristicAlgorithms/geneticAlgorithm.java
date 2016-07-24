@@ -1,4 +1,4 @@
-package hAlgorithms;
+package HeuristicAlgorithms;
 /**
  * 
  * @author Tibbers
