@@ -7,21 +7,15 @@ import edu.uci.ics.jung.algorithms.shortestpath.DijkstraShortestPath;
 import java.util.*;
 
 public class branchAndBound {
-	myGraph<Node,Edge> ShortestPathGraph;
+	public myGraph<Node,Edge> ShortestPathGraph;
 	DijkstraShortestPath<Node,Edge> DSP;
-	float totalGeometricCost;
-
-	public branchAndBound(){
-		this.ShortestPathGraph = new myGraph();
-	}	
+	float totalGeometricCost;	
 		
-	public branchAndBound(myGraph<Node,Edge> ShortestPathGraph){
-		this.ShortestPathGraph = ShortestPathGraph;
-	}
 	
 	public void pick(){
-		
-		for(Node node1: this.ShortestPathGraph.getVertices()){
+		List<Node> temp = new ArrayList(this.ShortestPathGraph.getVertices());
+		Collections.shuffle(temp);
+		for(Node node1: temp/*this.ShortestPathGraph.getVertices()*/){
 			LinkedHashMap<Float,Node> stack = new LinkedHashMap<Float,Node>();
 			System.out.println("==========For Node : " + node1 + "============== degree" + node1.getDegree() );
 			float threshold = 0;
