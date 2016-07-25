@@ -6,6 +6,7 @@ public class Node {
 	private int y;
 	private int degree;
 	private boolean fix;
+	private float distanceThreshold;
 	public Node(int id){
 		this.id = id;
 	}
@@ -21,6 +22,14 @@ public class Node {
 		this.y = y;
 		this.degree = 0;
 	}
+	public float getDistanceThreshold(){
+		return this.distanceThreshold;
+	};
+	
+	public void setDistanceThreshold(float threshold){
+		this.distanceThreshold = threshold;
+	}
+	
 	public boolean isFixed(){
 		if(fix == true){
 			return true;

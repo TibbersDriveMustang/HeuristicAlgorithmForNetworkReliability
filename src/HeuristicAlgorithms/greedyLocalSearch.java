@@ -27,6 +27,7 @@ public class greedyLocalSearch {
 		this.nextRound();
 		this.nextRound();
 		this.overallDiameter();
+		System.out.println("Total GeometricCost: " + this.totalGeometricCost);
 	}
 	public myGraph<Node,Edge> getShortestPathGraph(){
 		return this.ShortestPathGraph;
@@ -35,24 +36,22 @@ public class greedyLocalSearch {
 	 * run 3 rounds to see if all nodes has degree >= 3, and the diameter <= 4
 	 */
 	public void nextRound(){
-		for(Node one : nodes){
-			float min = Float.MAX_VALUE;
-			Node temp = null;
-			for(Node two : nodes){
-				if(one == two){
-					continue;
-				}
-				if(this.getGeometricDistance(one, two) < min){
-					Edge edge = new Edge(one,two,this.getGeometricDistance(one, two));
-					if(!this.ShortestPathGraph.containsEdge(edge)){
-						min = this.getGeometricDistance(one, two);
-						temp = two;
-					}
+		for(int i = 0; i < nodes.length; i++){
+			float nextMin = Float.MAX_VALUE;
+			Node index = null;
+			for(int j = i + 1; j < nodes.length; j++){
+				float distance = this.getGeometricDistance(nodes[i],nodes[j]);
+				if(distance <= nextMin && distance > nodes[i].getDistanceThreshold()){
+					index = nodes[j];
+					nextMin = distance;
 				}
 			}
-			Edge edge = new Edge(one,temp,this.getGeometricDistance(one, temp));
-			this.ShortestPathGraph.addEdge(edge, one, temp);
-			this.totalGeometricCost += this.getGeometricDistance(one, temp);
+			if(index != null){
+				nodes[i].setDistanceThreshold(nextMin);
+				Edge edge = new Edge(nodes[i],index,nextMin);
+				this.ShortestPathGraph.addEdge(edge, nodes[i], index);
+				this.totalGeometricCost += nextMin;
+			}
 		}
 	}
 	
