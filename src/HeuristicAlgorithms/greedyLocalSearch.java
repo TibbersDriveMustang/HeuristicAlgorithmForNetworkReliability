@@ -1,5 +1,8 @@
 package HeuristicAlgorithms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import NetworkElements.Edge;
@@ -18,16 +21,16 @@ public class greedyLocalSearch {
 	private myGraph<Node,Edge> ShortestPathGraph;
 	private DijkstraShortestPath<Node,Edge> DSP;
 	private float totalGeometricCost;
-	private Node[] nodes;
+	private List<Node> nodes;
 	
 	public greedyLocalSearch(Node[] nodes){
 		this.ShortestPathGraph = new myGraph<Node,Edge>();
-		this.nodes = nodes;
+		this.nodes = Arrays.asList(nodes);
 		this.nextRound();
 		this.nextRound();
 		this.nextRound();
 		this.overallDiameter();
-		System.out.println("Total GeometricCost: " + this.totalGeometricCost);
+		System.out.println("Greedy Local Search Total GeometricCost: " + this.totalGeometricCost);
 	}
 	public myGraph<Node,Edge> getShortestPathGraph(){
 		return this.ShortestPathGraph;
@@ -36,20 +39,22 @@ public class greedyLocalSearch {
 	 * run 3 rounds to see if all nodes has degree >= 3, and the diameter <= 4
 	 */
 	public void nextRound(){
-		for(int i = 0; i < nodes.length; i++){
+		List<Node> tempNodes = new ArrayList(Arrays.asList(nodes));
+		Collections.shuffle(tempNodes);
+		for(int i = 0; i < nodes.size(); i++){
 			float nextMin = Float.MAX_VALUE;
 			Node index = null;
-			for(int j = i + 1; j < nodes.length; j++){
-				float distance = this.getGeometricDistance(nodes[i],nodes[j]);
-				if(distance <= nextMin && distance > nodes[i].getDistanceThreshold()){
-					index = nodes[j];
+			for(int j = i + 1; j < nodes.size(); j++){
+				float distance = this.getGeometricDistance(nodes.get(i),nodes.get(j));
+				if(distance <= nextMin && distance > nodes.get(i).getDistanceThreshold()){
+					index = nodes.get(j);
 					nextMin = distance;
 				}
 			}
 			if(index != null){
-				nodes[i].setDistanceThreshold(nextMin);
-				Edge edge = new Edge(nodes[i],index,nextMin);
-				this.ShortestPathGraph.addEdge(edge, nodes[i], index);
+				nodes.get(i).setDistanceThreshold(nextMin);
+				Edge edge = new Edge(nodes.get(i),index,nextMin);
+				this.ShortestPathGraph.addEdge(edge, nodes.get(i), index);
 				this.totalGeometricCost += nextMin;
 			}
 		}

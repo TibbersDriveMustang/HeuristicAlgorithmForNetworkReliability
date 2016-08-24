@@ -11,9 +11,11 @@ public class branchAndBound {
 	DijkstraShortestPath<Node,Edge> DSP;
 	float totalGeometricCost;	
 		
-	
+	/**
+	 * for each node, pick its 3 least cost outgoing edges, added to graph, then set this node as fixed, going to next node
+	 */
 	public void pick(){
-		List<Node> temp = new ArrayList(this.ShortestPathGraph.getVertices());
+		List<Node> temp = new ArrayList<Node>(this.ShortestPathGraph.getVertices());
 		Collections.shuffle(temp);
 		for(Node node1: temp/*this.ShortestPathGraph.getVertices()*/){
 			LinkedHashMap<Float,Node> stack = new LinkedHashMap<Float,Node>();
@@ -67,7 +69,7 @@ public class branchAndBound {
 			}
 
 		}
-		System.out.println("Total Cost: " + this.totalGeometricCost);
+		System.out.println("Branch and Bound Total Geometric Cost: " + this.totalGeometricCost);
 		//System.out.println("Edges : " + Arrays.asList(this.ShortestPathGraph.getEdges()));
 	}
 	
